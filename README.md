@@ -40,6 +40,7 @@ La aplicación Dash incluye las siguientes funcionalidades:
 2. **Relaciones con Tecnologia** : Mapa interactivo que muestra diferencias regionales en velocidad y tecnología predominante.
 3. **Relación con Tecnologías** : Gráficos que destacan la proporción de tecnologías como ADSL, Cablemódem, Fibra Óptica y Wireless.
 4. **Análisis Estadístico** : Relaciones entre velocidad de internet y penetración, con métricas de correlación y regresión lineal.
+5. **KPI**: Indicadores Claves de desempeño. Se mediran 2 KPI con respecto a Penetracion Hogar y Velocidad Media en algunas provincias
 
 ### Tecnologías utilizadas en la aplicación
 
@@ -70,7 +71,30 @@ La aplicación Dash incluye las siguientes funcionalidades:
 ### **4. Análisis Estadístico**
 
 * La velocidad media de internet está significativamente correlacionada con la penetración en la población (R² = 0.65).
-* El análisis de regresión sugiere que un aumento del 1% en la penetración por hogares incrementa la velocidad promedio en aproximadamente 0.3 Mbps.
+* El análisis de regresión sugiere que un aumento del 1% en la penetración por hogares incrementa la velocidad promedio en aproximadamente 0.3 Mbps.. KPI Propuestos: Incremento Proyectado de Acceso a Internet y Velocidad Media de Descarga para el Próximo Año
+
+### 5. KPI
+
+### 5.1 Incremento proyectado del acceso a internet (8%) para el próximo año por provincia
+
+Se generará data aleatoria para la penetración por hogar durante el año 2024, comparando los valores estimados (incremento del 8% para el último trimestre de 2024) con los valores reales simulados.
+
+Resultados esperados:
+
+* **Crecimiento sostenido** : El análisis muestra un aumento progresivo en la penetración de internet por hogar.
+
+### 5.2. Incremento proyectado de la Velocidad Media de Descarga (10% trimestral) para las provincias con menor velocidad
+
+Se generará data aleatoria para la Velocidad Media de Descarga durante el año 2024, comparando los valores estimados (incremento del 40% para el último trimestre de 2024) con los valores reales simulados.
+
+Resultados esperados:
+
+* **Incremento sostenido** : El crecimiento trimestral destaca los avances en infraestructura y políticas aplicadas.
+* **Análisis detallado** : Identifica las provincias con menor crecimiento, facilitando ajustes estratégicos.
+
+Conclusión general:
+
+Ambos KPI reflejan un progreso positivo en la expansión del acceso a internet y la mejora de la velocidad media de descarga. Las gráficas proporcionan una visión clara del cumplimiento de metas y áreas de oportunidad para cada provincia.
 
 ---
 

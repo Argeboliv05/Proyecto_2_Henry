@@ -190,13 +190,16 @@ def crear_grafico_kpi_penetracion(kpi_mean):
     return fig
 
 def crear_grafico_tendencia_penetracion(penetracion_hogar_estimado_mean, penetracion_hogar_simulado_mean):
+    penetracion_hogar_estimado_mean = penetracion_hogar_estimado_mean.merge(penetracion_hogar_simulado_mean)
+
     fig = px.line(
-        x=penetracion_hogar_estimado_mean["Fecha"],
-        y=[penetracion_hogar_estimado_mean["Estimado"],penetracion_hogar_simulado_mean["Real"]],
-        labels={
-            "x": "Fecha",
-            "y": "Accesos por cada 100 Hogares (Promedio Nacional)"
-        },
+        penetracion_hogar_estimado_mean,
+        x="Fecha",
+        y=["Estimado", "Real"],
+        #labels={
+        #    "value": "Accesos por cada 100 Hogares (Promedio Nacional)",  # Etiqueta del eje Y
+        #    "variable": "Leyenda"  # Etiqueta del eje de la leyenda
+        #},
         title="Tendencia de Estimados y Real de Penetración por Hogar",
     )
     fig.update_layout(
@@ -419,7 +422,7 @@ def crear_mapa_tendencias_provincias(year):
 
 
 # Inicializar la app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY], suppress_callback_exceptions=True)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG], suppress_callback_exceptions=True)
 app.title = "Análisis de Acceso a Internet en Argentina"
 
 # Layout de la app
@@ -596,9 +599,22 @@ def update_content(tab):
             dcc.Graph(id="grafico-kpi-penetracion", style={"width": "90%","height": "600px","overflow": "hidden","margin":"0 auto"}), 
             dcc.Graph(id="grafico-tendencia-penetracion",style={"width": "90%","height": "600px","overflow": "hidden","margin":"0 auto"}), 
 
-            html.H3("KPI: Velocidad Media de Descarga"),
-            html.P("Objetivo: Aumentar en un 40% la velocidad media de descarga de internet para el próximo año, para las dos provincias con menor velocidad de descarga."),
-            dcc.Graph(id="grafico-kpi-velocidad",style={"width": "90%","height": "600px","overflow": "hidden"}),  # Placeholder para gráfico de KPI de velocidad
+            html.H3("KPI: Velocidad Media de Descarga", style={"text-align": "center",
+                           "font-size": "32px", 
+                           "margin-top": "20px",
+                           "margin-bottom": "10px",
+                           "height": "40px"
+                    }),
+            html.P("Objetivo: Aumentar en un 40% la velocidad media de descarga de internet para el próximo año, para las dos provincias con menor velocidad de descarga.", style={
+                       "text-align": "center",       
+                       "font-size": "18px",          
+                       "margin-top": "5px",         
+                       "margin-bottom": "15px",     
+                       "color": "#555",
+                       "height": "40px"
+
+    }),
+            dcc.Graph(id="grafico-kpi-velocidad",style={"width": "90%","height": "600px","overflow": "hidden","margin":"0 auto"}),  # Placeholder para gráfico de KPI de velocidad
             html.Div(id="graficas-tendencia-provincias",style={"width": "90%","height": "1200px","overflow": "hidden","margin":"0 auto"})  # Placeholder para gráficos por provincia
         ])
 
