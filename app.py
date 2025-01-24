@@ -273,6 +273,7 @@ def crear_mapa_interactivo():
         marker_line_color='black',
         hoverinfo='text',
         text=gdf['Provincia'] + ': ' + gdf["Mbps (Media de bajada)"].astype(str) + ' Mbps',
+        hovertemplate='<b>Provincia:</b> %{text}<extra></extra>'
     ))
 
     fig_mapa.update_layout(
@@ -283,6 +284,16 @@ def crear_mapa_interactivo():
         margin={"r": 0, "t": 0, "l": 0, "b": 0},
         height=None,  # Permite que se ajuste dinámicamente al contenedor
         width=None,
+        hoverlabel=dict(
+            bgcolor="white",  # Fondo blanco del hover
+            font_size=12,
+            font_family="Arial"
+        ),
+        coloraxis_colorbar=dict(
+            title="Mbps",  # Título de la barra de colores
+            tickvals=[0, gdf["Mbps (Media de bajada)"].max() / 2, gdf["Mbps (Media de bajada)"].max()],
+            ticktext=["Bajo", "Medio", "Alto"]  # Etiquetas de los ticks
+        )
     )
     return fig_mapa
 # Crear gráficos iniciales
@@ -491,9 +502,7 @@ def update_content(tab):
             })
         ])
     elif tab == "tab2":
-        #222222222222222222222222222222222222222222222222222222222222222222222222222222222222
         return html.Div([
-
 
             html.Div([
                 html.Div([
@@ -526,7 +535,6 @@ def update_content(tab):
                 ],style={"width": "50%", "display": "flex", "flex-direction": "column", "justify-content": "space-between", "align-items": "center"}),
          ], style={"width": "100%", "display": "flex", "flex-direction": "row", "height": "80vh"})
     elif tab == "tab3":
-        #333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
         return dbc.Container([
             dbc.Row([
                 dbc.Col(html.H4("Análisis Estadístico: Velocidad vs Penetración", className="text-center mb-4"), width=12)
@@ -543,7 +551,6 @@ def update_content(tab):
             ])
         ])
     elif tab == "tab4":
-        #4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444
         return html.Div([
         html.Div([
             html.H4("Top 3 Crecimientos", style={"text-align": "center"}),
@@ -568,7 +575,6 @@ def update_content(tab):
         ], style={"width": "75%", "float": "right", "padding": "10px"})
     ], style={"display": "flex"})
     elif tab == "tab5":
-        #5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
         return html.Div([
             html.H3("KPI: Penetración por Hogares", 
                     style={"text-align": "center",
@@ -592,8 +598,8 @@ def update_content(tab):
 
             html.H3("KPI: Velocidad Media de Descarga"),
             html.P("Objetivo: Aumentar en un 40% la velocidad media de descarga de internet para el próximo año, para las dos provincias con menor velocidad de descarga."),
-            dcc.Graph(id="grafico-kpi-velocidad",style={"width": "90%","height": "600px","overflow": "hidden","border": "2px solid #ccc","margin":"0 auto"}),  # Placeholder para gráfico de KPI de velocidad
-            html.Div(id="graficas-tendencia-provincias",style={"width": "90%","height": "600px","overflow": "hidden","border": "2px solid #ccc","margin":"0 auto"})  # Placeholder para gráficos por provincia
+            dcc.Graph(id="grafico-kpi-velocidad",style={"width": "90%","height": "600px","overflow": "hidden"}),  # Placeholder para gráfico de KPI de velocidad
+            html.Div(id="graficas-tendencia-provincias",style={"width": "90%","height": "1200px","overflow": "hidden","margin":"0 auto"})  # Placeholder para gráficos por provincia
         ])
 
 # Callbacks placeholders para todas las pestañas
